@@ -14,3 +14,5 @@ ShadowSocks<br>
 ## python
 pycharm<br>
 eclipse<br>
+## tensorflow
+conda install -c conda-forge tensorflow-gpu<br>
