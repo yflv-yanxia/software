@@ -1,32 +1,32 @@
 # software
 ## ffmpeg
-ffmpeg -ss 00:00:00 -i input.mp4 -c copy -t 00:01:00 output.mp4
+    ffmpeg -ss 00:00:00 -i input.mp4 -c copy -t 00:01:00 output.mp4
+    ffprobe -i video_path -show_entries format-duration -v quiet -of csv="p=0"
 
 ## linux
-find $directory -type f -name "*" -exec mv {} $directory2/. \;
+    find $directory -type f -name "*" -exec mv {} $directory2/. \;
 ### install
-touch ~/.bashrc<br>
-echo -e "export LD_LIBRARY_PATH=$LD_LIBRAARY_PATH:"
-source ~/.bashrc<br>
-if [ ! -f -d -e  "" ]; then<br>
-    cd <br>
-    echo<br>
-    exit<br>
-fi<br>
+    touch ~/.bashrc<br>
+    echo -e "export LD_LIBRARY_PATH=$LD_LIBRAARY_PATH:"
+    source ~/.bashrc
+    if [ ! -f -d -e  "" ]; then<br>
+        cd
+        echo
+        exit
+    fi
 
 ## sourceInsigtht
 
 ## wall
-psiphon3<br>
-ShadowSocks<br>
+    psiphon3
+    ShadowSocks
 
 ## python
-pycharm<br>
-eclipse<br>
-
-## tensorflow
-conda install -c conda-forge tensorflow-gpu<br>
+    pycharm
+    eclipse
 
 ## vim
-set number<br>
-set mouse=a<br>
+    set number
+    set mouse=a
+
+## abench
