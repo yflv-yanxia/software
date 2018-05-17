@@ -21,10 +21,6 @@
     psiphon3
     ShadowSocks
 
-## python
-    pycharm
-    eclipse
-
 ## vim
     set number
     set mouse=a
