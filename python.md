@@ -36,7 +36,7 @@
     extern "C" int test( void* p, int len)
     {
          return len;
-    }
+    }  
     
     buff = 'weidazhongguo'
     test.argtypes = (ctypes.c_char_p, ctypes.c_int)
@@ -49,3 +49,17 @@
     p = Point(2,5)  
     p.x = 3 
     print (p.x, p.y) 
+    
+## pointer
+    extern "C" int addff(float a, float* b)
+    {
+      *b = a;
+      return a + (*b);
+    }
+    
+    so_pointer.addff.argtypes = (ctypes.c_float, ctypes.POINTER(ctypes.c_float))
+    so_pointer.addff.restype = ctypes.c_float  
+    a = 2
+    b = ctypes.c_float(3)
+    c = so_pointer.addff(a, ctypes.pointer(b))
+    print(a,b,c)
