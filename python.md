@@ -62,4 +62,53 @@
     a = 2
     b = ctypes.c_float(3)
     c = so_pointer.addff(a, ctypes.pointer(b))
-    print(a,b,c)
+    print(a,b,c)
+## array
+    #include <stdlib.h>
+    #include <stdint.h>
+    __declspec(dllexport) void read(int16_t* input, size_t size)
+    {
+      int i;
+      for(i=0;i<size;i++)
+        input[i] = i;
+    }
+    
+    from ctypes import *
+    x = CDLL('x')
+    x.read.argtypes = [POINTER(c_int16)]
+    x.read.restype = None
+    p = (c_int16*5)()
+    x.read(p,len(p))
+    print(list(p))
+    
+    -------------
+    #include <stdlib.h>
+    #include <stdint.h>
+    __declspec(dllexport) void read(int16_t** input, size_t size)
+    {
+      int i;
+      int16_t* p = (int16_t*) malloc (size*sizeof(int16_t));
+      for(i=0;i<size;i++)
+        p[i] = i;
+      *input = p;
+    }
+    __declspec(dllexport) void release(int16_t* input)
+    {
+        free(input);
+    }
+    
+    from ctypes import *
+    x = CDLL('x')
+    x.read.argtypes = [POINTER(POINTER(c_int16))]
+    x.read.restype = None
+    x.release.argtypes = [POINTER(c_int16)]
+    x.release.restype = None
+    p = POINTER(c_int16)()
+    x.read(p,5)
+    for i in range(5):
+        print(p[i])
+    x.release(p)
+    
+    #if array defined in python
+    pyarr = [1, 2, 3, 4]
+    arr = (ctypes.c_int * len(pyarr))(*pyarr)
