@@ -1,7 +1,11 @@
 # template
     cmake_minimum_required (VERSION 2.8)
 
-    project (Demo)
+    # variable
+    set(OBJ_NAME Demo)
+    
+    project ($(OBJ_NAME))
+    
 
     SET(CMAKE_BUILD_TYPE Release ON)
     add_compile_options(-std=c++11)
@@ -15,11 +19,13 @@
         /opt/OpenBLAS/include
         )
 
-    add_executable(Demo 
-        ../src/main.cpp
-        )
+    aux_source_directory(./src DIR_SRCS)
+    add_executable(${OBJ_NAME} ${DIR_SRCS})
+    #add_executable($(OBJ_NAME) 
+    #    ../src/main.cpp
+    #    )
 
-    target_link_libraries(Demo 
+    target_link_libraries($(OBJ_NAME) 
         /usr/lib64/libopencv_core.so
         /usr/lib64/libopencv_highgui.so
         /usr/lib64/libopencv_imgproc.so
@@ -27,3 +33,4 @@
         /usr/lib64/libboost_system.so
         /usr/lib64/libpthread.so
         )
+    #install (TARGETS ${OBJ_NAME} DESTINATION bin)
