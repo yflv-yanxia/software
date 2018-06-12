@@ -19,8 +19,11 @@
         /opt/OpenBLAS/include
         )
 
-    aux_source_directory(./src DIR_SRCS)
-    add_executable(${OBJ_NAME} ${DIR_SRCS})
+    file(GLOB SOURCES src/*.cpp src/*.cc)
+    aux_source_directory(./src SOURCES)
+    add_executable(${OBJ_NAME} ${SOURCES})
+    add_library(bingitup STATIC bingitup.cpp)
+    add_library(bingitup SHARED bingitup.cpp)
     #add_executable($(OBJ_NAME) 
     #    ../src/main.cpp
     #    )
