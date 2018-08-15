@@ -48,3 +48,11 @@
     FLAGS_stderrthreshold = google::ERROR;
     
     google::ShutdownGoogleLogging();
+    
+# accelerate
+    batch
+    remove batchnorm in deployment
+    multi-thread
+    sort by gpu
+    reduce timestep
+    
