@@ -55,4 +55,7 @@
     multi-thread
     sort by gpu
     reduce timestep
+    partial sort
+    tensorRT
+    Caffe-Int8-Convert-Tools
     
