@@ -26,3 +26,7 @@
     set mouse=a
 
 ## abench
+## anaconda
+    url errors： modify ./.condarc
+    https://mirror.tuna.tsinghua.edu.cn/help/anaconda/
+    add channels
